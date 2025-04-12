@@ -3,10 +3,10 @@ name: Deploy to Vercel
 on:
   push:
     branches:
-      - main  # Runs on push to main branch
+      - main  # Run on push to main branch
   pull_request:
     branches:
-      - main  # Runs checks on PRs to main branch
+      - main  # Run on PRs to main branch
 
 jobs:
   deploy:
@@ -25,14 +25,13 @@ jobs:
           node-version: '18'
 
       - name: Install dependencies
-        run: npm install  # faster and more reliable than npm install in CI
+        run: npm install
 
-      # Create .env file from GitHub secrets
-      - name: Create environment file
+      - name: Create .env file
         run: |
           echo "VITE_DATA_PATH=$VITE_DATA_PATH" >> .env
           echo "VITE_PUBLIC_DATA_URL=$VITE_PUBLIC_DATA_URL" >> .env
-        
+
       - name: Create data directory
         run: mkdir -p dist/src/data
 
@@ -42,8 +41,7 @@ jobs:
       - name: Build project
         run: npm run build
 
-      # Upload JSON to CDN only if the secret exists
-      - name: Check if CDN upload URL exists
+      - name: Check for CDN upload
         id: check_cdn
         run: |
           if [ -n "${{ secrets.CDN_UPLOAD_URL }}" ]; then
@@ -68,4 +66,5 @@ jobs:
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
           working-directory: ./
-          vercel-args: '--prod'
+          # Deploy as preview for pull requests, production for push
+          vercel-args: ${{ github.event_name == 'pull_request' && '' || '--prod' }}
