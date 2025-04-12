@@ -1,0 +1,152 @@
+{
+  "hero": {
+    "name": "Yash Mahadevwala",
+    "title": "Software Engineer",
+    "specialization": "Vue.js, React.js & Node.js",
+    "description": "Building user-friendly web applications with modern technologies. Passionate about creating efficient, clean code and delivering exceptional user experiences.",
+    "callToAction": "Contact Me",
+    "secondaryAction": "View My Work",
+    "socials": [
+      {
+        "platform": "github",
+        "url": "https://github.com/yashmahadevwala"
+      },
+      {
+        "platform": "linkedin",
+        "url": "https://in.linkedin.com/in/yash-mahadevwala"
+      }
+    ],
+    "initials": "YM"
+  },
+  "about": {
+    "title": "About Me",
+    "subtitle": "I'm a dedicated software engineer with a passion for building web applications that deliver exceptional user experiences.",
+    "skills": [
+      {
+        "title": "Frontend Development",
+        "icon": "Code",
+        "description": "Specialized in building modern, responsive user interfaces using Vue.js, React.js, and other frontend technologies."
+      },
+      {
+        "title": "Full Stack Development",
+        "icon": "Monitor",
+        "description": "Experienced in both frontend and backend technologies, including Node.js, Express, and various databases."
+      },
+      {
+        "title": "UI/UX Focus",
+        "icon": "Sparkles",
+        "description": "Committed to creating intuitive, accessible, and visually appealing user interfaces with attention to detail."
+      }
+    ],
+    "bio": [
+      "I'm a software engineer with over 5 years of experience in web development. My journey in technology started with a passion for creating intuitive user interfaces, and has evolved into expertise across the full development stack.",
+      "My professional experience includes working at Eminenture and Biz4Group, where I've contributed to various projects ranging from e-commerce platforms to enterprise applications.",
+      "When I'm not coding, I enjoy staying updated with the latest technology trends, contributing to open-source projects, and continuously improving my skills through learning and experimentation."
+    ]
+  },
+  "skills": {
+    "title": "Skills & Expertise",
+    "subtitle": "My technical toolkit and areas of expertise",
+    "categories": [
+      {
+        "name": "Frontend",
+        "skills": [
+          { "name": "React", "level": 90 },
+          { "name": "Vue.js", "level": 95 },
+          { "name": "JavaScript", "level": 92 },
+          { "name": "TypeScript", "level": 85 },
+          { "name": "HTML/CSS", "level": 95 },
+          { "name": "Tailwind CSS", "level": 90 }
+        ]
+      },
+      {
+        "name": "Backend",
+        "skills": [
+          { "name": "Node.js", "level": 88 },
+          { "name": "Express", "level": 85 },
+          { "name": "MongoDB", "level": 80 },
+          { "name": "SQL", "level": 75 },
+          { "name": "RESTful APIs", "level": 92 }
+        ]
+      },
+      {
+        "name": "Tools & Others",
+        "skills": [
+          { "name": "Git", "level": 90 },
+          { "name": "Docker", "level": 75 },
+          { "name": "AWS", "level": 70 },
+          { "name": "Testing", "level": 85 },
+          { "name": "CI/CD", "level": 70 }
+        ]
+      }
+    ]
+  },
+  "experience": {
+    "title": "Work Experience",
+    "subtitle": "My professional journey",
+    "positions": [
+      {
+        "title": "Senior Software Engineer",
+        "company": "Biz4Group",
+        "period": "2020 - Present",
+        "description": "Leading development of complex web applications using React, Vue.js, and Node.js. Mentoring junior developers and implementing best practices for code quality.",
+        "achievements": [
+          "Optimized application performance by 40% through code refactoring and implementing lazy loading",
+          "Led successful migration from legacy codebase to modern React architecture",
+          "Implemented automated testing that increased code coverage to 85%"
+        ],
+        "technologies": ["React", "Vue.js", "Node.js", "MongoDB", "TypeScript"]
+      },
+      {
+        "title": "Web Developer",
+        "company": "Eminenture",
+        "period": "2018 - 2020",
+        "description": "Developed responsive web applications and collaborated with design team to create intuitive user interfaces.",
+        "achievements": [
+          "Built and maintained multiple client websites with clean, efficient code",
+          "Implemented responsive designs across all projects ensuring optimal UX on all devices",
+          "Reduced page load times by 25% through performance optimizations"
+        ],
+        "technologies": ["JavaScript", "HTML/CSS", "Vue.js", "PHP", "MySQL"]
+      }
+    ]
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Some of my recent work",
+    "items": [
+      {
+        "title": "E-Commerce Platform",
+        "description": "A full-featured online shopping platform with user authentication, product management, and payment processing",
+        "image": "/project-images/ecommerce.jpg",
+        "technologies": ["React", "Node.js", "MongoDB", "Stripe API"],
+        "liveUrl": "https://example.com/ecommerce",
+        "sourceUrl": "https://github.com/example/ecommerce"
+      },
+      {
+        "title": "Task Management App",
+        "description": "A collaborative task management application with real-time updates and team collaboration features",
+        "image": "/project-images/taskapp.jpg",
+        "technologies": ["Vue.js", "Firebase", "Tailwind CSS"],
+        "liveUrl": "https://example.com/taskapp",
+        "sourceUrl": "https://github.com/example/taskapp"
+      },
+      {
+        "title": "Portfolio Website",
+        "description": "A responsive developer portfolio site with animations and dynamic content loading",
+        "image": "/project-images/portfolio.jpg",
+        "technologies": ["React", "TypeScript", "Framer Motion"],
+        "liveUrl": "https://example.com/portfolio",
+        "sourceUrl": "https://github.com/example/portfolio"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contact Me",
+    "subtitle": "Interested in working together? Get in touch!",
+    "email": "contact@yashmahadevwala.com",
+    "phone": "+91 98765 43210",
+    "location": "Gujarat, India",
+    "formEndpoint": "https://formspree.io/f/yourformid"
+  }
+} 

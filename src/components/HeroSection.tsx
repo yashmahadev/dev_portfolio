@@ -1,9 +1,10 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { usePortfolio } from '@/contexts/PortfolioContext';
 
 const HeroSection = () => {
+  const { data, loading } = usePortfolio();
   const [isLoaded, setIsLoaded] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const heroRef = useRef<HTMLDivElement>(null);
@@ -57,6 +58,13 @@ const HeroSection = () => {
     ));
   };
   
+  // If data is loading, show a simple loading state
+  if (loading) {
+    return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+  }
+  
+  const { hero } = data;
+  
   return (
     <section 
       id="home" 
@@ -75,23 +83,21 @@ const HeroSection = () => {
                 {isLoaded && renderAnimatedText("Hi, I'm", 300)}
               </span> 
               <span className="block overflow-hidden bg-clip-text bg-gradient-to-r from-primary to-accent font-extrabold drop-shadow-md">
-                {isLoaded && renderAnimatedText("Yash Mahadevwala", 800)}
+                {isLoaded && renderAnimatedText(hero.name, 800)}
               </span>
             </h1>
             
             <p className="text-xl md:text-2xl mb-6 overflow-hidden">
-              Software Engineer specializing in
+              {hero.title} specializing in
               <span className="block font-mono text-primary font-semibold mt-2 animate-typing">
                 <span className="inline-block">
-                  Vue.js, React.js & Node.js
+                  {hero.specialization}
                 </span>
               </span>
             </p>
             
             <p className="text-muted-foreground mb-8 max-w-lg opacity-0 animate-fade-in" style={{ animationDelay: '1200ms', animationFillMode: 'forwards' }}>
-              Building user-friendly web applications with modern technologies.
-              Passionate about creating efficient, clean code and delivering
-              exceptional user experiences.
+              {hero.description}
             </p>
             
             <div className="flex flex-wrap gap-4 opacity-0 animate-fade-in" style={{ animationDelay: '1500ms', animationFillMode: 'forwards' }}>
@@ -99,35 +105,33 @@ const HeroSection = () => {
                 <a href="#contact" className="relative z-10">
                   <span className="absolute inset-0 w-0 bg-accent group-hover:w-full transition-all duration-300 z-0"></span>
                   <Mail className="h-4 w-4 relative z-10" /> 
-                  <span className="relative z-10">Contact Me</span>
+                  <span className="relative z-10">{hero.callToAction}</span>
                 </a>
               </Button>
               
               <Button variant="outline" asChild className="gap-2 relative overflow-hidden group">
                 <a href="#projects" className="relative z-10">
                   <span className="absolute inset-0 w-0 bg-primary/10 group-hover:w-full transition-all duration-300 z-0"></span>
-                  <span className="relative z-10">View My Work</span>
+                  <span className="relative z-10">{hero.secondaryAction}</span>
                 </a>
               </Button>
             </div>
             
             <div className="flex items-center gap-4 mt-8 opacity-0 animate-fade-in" style={{ animationDelay: '1800ms', animationFillMode: 'forwards' }}>
-              <a 
-                href="https://github.com/yashmahadevwala" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-foreground transition-colors hover:scale-110 duration-300"
-              >
-                <Github className="h-5 w-5" />
-              </a>
-              <a 
-                href="https://in.linkedin.com/in/yash-mahadevwala" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-foreground transition-colors hover:scale-110 duration-300"
-              >
-                <Linkedin className="h-5 w-5" />
-              </a>
+              {hero.socials.map((social, index) => {
+                const IconComponent = social.platform === 'github' ? Github : Linkedin;
+                return (
+                  <a 
+                    key={index}
+                    href={social.url} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-foreground transition-colors hover:scale-110 duration-300"
+                  >
+                    <IconComponent className="h-5 w-5" />
+                  </a>
+                );
+              })}
             </div>
           </div>
           
@@ -144,7 +148,7 @@ const HeroSection = () => {
                   className="w-full h-full flex items-center justify-center text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-primary via-accent to-primary/70 animate-text-shimmer"
                   style={{ backgroundSize: '200% auto' }}
                 >
-                  YM
+                  {hero.initials}
                 </div>
               </div>
               

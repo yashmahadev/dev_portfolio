@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Moon, Sun } from 'lucide-react';
+import { Menu, X, Moon, Sun, Settings } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useTheme } from '@/contexts/ThemeContext';
+import { Link } from 'react-router-dom';
 
 const navLinks = [
   { name: 'Home', href: '#home' },
@@ -35,8 +36,8 @@ const Navbar = () => {
 
   // Close mobile menu when clicking outside
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (mobileMenuOpen && !event.target.closest('.mobile-menu-container')) {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (mobileMenuOpen && !(event.target as Element).closest('.mobile-menu-container')) {
         setMobileMenuOpen(false);
       }
     };
@@ -93,6 +94,14 @@ const Navbar = () => {
                 </a>
               ))}
               
+              {/* <Link
+                to="/editor"
+                className="px-3 py-2 text-sm font-medium hover:text-primary transition-colors flex items-center gap-1"
+              >
+                <Settings className="h-4 w-4" />
+                <span>Edit Data</span>
+              </Link> */}
+
               <button
                 onClick={toggleTheme}
                 className="p-2 rounded-full bg-secondary hover:bg-secondary/80 transition-colors"
@@ -171,6 +180,15 @@ const Navbar = () => {
                 {link.name}
               </a>
             ))}
+            
+            <Link
+              to="/editor"
+              className="px-6 py-4 text-lg font-medium border-b border-border hover:bg-primary/5 hover:text-primary transition-colors flex items-center gap-2"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <Settings className="h-5 w-5" />
+              Edit Portfolio Data
+            </Link>
           </div>
           
           {/* Footer section in mobile menu */}

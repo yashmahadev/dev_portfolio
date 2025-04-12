@@ -1,71 +1,56 @@
-
 import React from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
-
-const skills = {
-  frontend: [
-    'Vue.js', 'React.js', 'Next.js', 'JavaScript', 'TypeScript', 'HTML5', 'CSS3',
-    'Tailwind CSS', 'SASS/SCSS', 'Redux', 'Context API', 'Webpack'
-  ],
-  backend: [
-    'Node.js', 'Express.js', 'RESTful APIs', 'GraphQL', 'PHP', 'Laravel',
-    'MongoDB', 'MySQL', 'PostgreSQL', 'Firebase'
-  ],
-  tools: [
-    'Git', 'GitHub', 'GitLab', 'Docker', 'AWS', 'Vercel', 'Netlify', 'Figma',
-    'VS Code', 'Postman', 'Jest', 'Cypress'
-  ]
-};
+import { usePortfolio } from '@/contexts/PortfolioContext';
 
 const SkillsSection = () => {
+  const { data, loading } = usePortfolio();
+  
+  if (loading) {
+    return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+  }
+  
+  const { skills } = data;
+  
+  // Helper function to render skill level bar
+  const renderSkillLevel = (level: number) => {
+    return (
+      <div className="w-full bg-secondary h-2 rounded-full mt-1">
+        <div 
+          className="bg-primary h-2 rounded-full" 
+          style={{ width: `${level}%` }}
+        ></div>
+      </div>
+    );
+  };
+  
   return (
     <section id="skills">
       <div className="section-container">
-        <h2 className="section-title">Skills & Expertise</h2>
+        <h2 className="section-title">{skills.title}</h2>
         <p className="section-subtitle">
-          My technical toolkit includes a range of technologies, frameworks, and methodologies
+          {skills.subtitle}
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-          <Card>
-            <CardContent className="pt-6">
-              <h3 className="text-xl font-bold mb-6 text-center">Frontend Development</h3>
-              <div className="flex flex-wrap gap-2">
-                {skills.frontend.map((skill) => (
-                  <Badge key={skill} variant="secondary" className="bg-secondary text-secondary-foreground px-3 py-1 text-sm">
-                    {skill}
-                  </Badge>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-          
-          <Card>
-            <CardContent className="pt-6">
-              <h3 className="text-xl font-bold mb-6 text-center">Backend Development</h3>
-              <div className="flex flex-wrap gap-2">
-                {skills.backend.map((skill) => (
-                  <Badge key={skill} variant="secondary" className="bg-secondary text-secondary-foreground px-3 py-1 text-sm">
-                    {skill}
-                  </Badge>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-          
-          <Card>
-            <CardContent className="pt-6">
-              <h3 className="text-xl font-bold mb-6 text-center">Tools & Platforms</h3>
-              <div className="flex flex-wrap gap-2">
-                {skills.tools.map((skill) => (
-                  <Badge key={skill} variant="secondary" className="bg-secondary text-secondary-foreground px-3 py-1 text-sm">
-                    {skill}
-                  </Badge>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
+          {skills.categories.map((category, index) => (
+            <Card key={index}>
+              <CardContent className="pt-6">
+                <h3 className="text-xl font-bold mb-6 text-center">{category.name}</h3>
+                <div className="space-y-4">
+                  {category.skills.map((skill, skillIndex) => (
+                    <div key={skillIndex}>
+                      <div className="flex justify-between items-center">
+                        <span>{skill.name}</span>
+                        <span className="text-xs text-muted-foreground">{skill.level}%</span>
+                      </div>
+                      {renderSkillLevel(skill.level)}
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          ))}
         </div>
         
         <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">

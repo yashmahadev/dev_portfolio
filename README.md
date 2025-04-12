@@ -1,94 +1,135 @@
-# 🚀 Welcome to the Project
+# Dynamic Portfolio Website
 
-## 📖 Project Overview
+A modern, responsive portfolio website with dynamic content loaded from a JSON data file.
 
-<!-- Access your live project here:  
-**🔗 [Project URL](https://lovable.dev/projects/7774f7c8-363f-4bac-8930-bc797258dd05)** -->
+## Features
 
----
+- 🚀 **Dynamic Content**: All website content is loaded from a single JSON data file
+- ✨ **Modern UI**: Built with React, TypeScript, and Tailwind CSS
+- 🎨 **Customizable**: Easy to personalize with the data editor
+- 🌗 **Dark/Light Mode**: Automatic theme switching based on user preference
+- 📱 **Responsive Design**: Looks great on all devices
+- 🔄 **Animations**: Subtle animations for engaging user experience
 
-## ✏️ How to Edit the Code
+## Getting Started
 
-You have multiple options to edit and manage your project:
+### Prerequisites
 
-### 1. Clone and Work Locally
+- Node.js 18+ 
+- npm or yarn
 
-Set up the project in your local environment:
+### Installation
 
+1. Clone the repository
 ```bash
-# Step 1: Clone the repository
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate into the project directory
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install all dependencies
-npm install
-
-# Step 4: Start the development server
-npm run dev
+git clone https://github.com/yourusername/portfolio.git
+cd portfolio
 ```
 
-👉 Make sure you have **Node.js** and **npm** installed.  
-You can install Node.js easily via [nvm (Node Version Manager)](https://github.com/nvm-sh/nvm#installing-and-updating).
+2. Install dependencies
+```bash
+npm install
+# or
+yarn install
+```
 
----
+3. Start the development server
+```bash
+npm run dev
+# or
+yarn dev
+```
 
-### 2. Edit Directly on GitHub
+4. Start the data API server (optional - for editing content via the UI)
+```bash
+npm run server
+# or
+yarn server
+```
 
-Quick edits can be made right from GitHub:
+5. Or run both the development server and API server together
+```bash
+npm run dev:full
+# or
+yarn dev:full
+```
 
-- Navigate to the file you want to edit.
-- Click the **pencil icon** ✏️ to edit.
-- After making changes, **commit** them with a meaningful message.
+The site will be available at http://localhost:5173 and the API server at http://localhost:5000.
 
----
+## Customizing Content
 
-### 3. Use GitHub Codespaces
+There are two ways to customize your portfolio content:
 
-Develop directly in your browser:
+### 1. Edit the JSON file directly
 
-- Open your repository on GitHub.
-- Click the **Code** button → **Codespaces** tab → **New codespace**.
-- Start editing and committing your changes effortlessly.
+Modify the file at `src/data/portfolio-data.json`.
 
----
+### 2. Use the built-in Data Editor
 
-## ⚙️ Technology Stack
+1. Start both the development server and API server:
+```bash
+npm run dev:full
+```
 
-This project is built using:
+2. Navigate to http://localhost:5173/editor
 
-- ⚡ **Vite** — Blazing fast frontend tooling
-- 🛡️ **TypeScript** — Strongly typed JavaScript
-- ⚛️ **React** — Component-based UI framework
-- 🎨 **shadcn-ui** — Beautifully crafted UI components
-- 💨 **Tailwind CSS** — Utility-first CSS framework
+3. Make your changes in the editor
 
----
+4. Click "Save Changes" to update your content
 
-## 🚀 Deployment Guide
+## Data Structure
 
-To deploy the project:
+The portfolio data is structured as follows:
 
-- Publish your application directly from your dashboard or hosting platform.
-- For more deployment flexibility, export the build and deploy it to your preferred hosting service (like Vercel, Netlify, etc.).
+```json
+{
+  "hero": {
+    "name": "Your Name",
+    "title": "Your Title",
+    ...
+  },
+  "about": {
+    "title": "About Me",
+    "subtitle": "Your subtitle",
+    ...
+  },
+  ...
+}
+```
 
----
+See the editor guide for a complete breakdown of the data structure.
 
-## 🌐 Connect a Custom Domain
+## Deployment
 
-Want to connect your own domain?
+1. Build the project:
+```bash
+npm run build
+# or
+yarn build
+```
 
-- Navigate to your project's **Settings > Domains**.
-- Click **Connect Domain** and follow the steps.
-  
-<!-- Need help? Check out this detailed [Custom Domain Setup Guide](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide). -->
+2. Deploy the `dist` directory to your hosting provider.
 
----
+For the data API in production:
+- Set up the API server on your hosting provider
+- Update the API_URL in the DataEditor component to point to your production API
+- Add authentication to secure the API endpoints
 
-# 🎯 Quick Start Checklist
+## Adding Authentication (Optional)
 
-✅ Install dependencies  
-✅ Run the development server  
-✅ Edit, commit, and push your changes  
-✅ Deploy and connect your custom domain!
+For production use, consider adding authentication to the data editor:
+
+1. Implement a login page
+2. Add authentication middleware to the API routes
+3. Protect the editor route with a route guard
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+- Built with [React](https://reactjs.org/)
+- Styled with [Tailwind CSS](https://tailwindcss.com/)
+- UI components from [shadcn/ui](https://ui.shadcn.com/)
+- Icons from [Lucide Icons](https://lucide.dev/)
