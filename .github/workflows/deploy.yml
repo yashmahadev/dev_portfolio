@@ -11,9 +11,9 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    permissions:   # <-- ADD THIS
+    permissions:  # Important
       contents: read
-      deployments: write
+      id-token: write
 
     env:
       VITE_DATA_PATH: src/data/portfolio-data.json
@@ -62,12 +62,9 @@ jobs:
           "${{ secrets.CDN_UPLOAD_URL }}"
         continue-on-error: true
 
+      - name: Install Vercel CLI
+        run: npm install -g vercel
+
       - name: Deploy to Vercel
-        uses: amondnet/vercel-action@v25
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          working-directory: ./
-          vercel-args: ${{ github.event_name == 'pull_request' && '' || '--prod' }}
+        run: |
+          vercel --token ${{ secrets.VERCEL_TOKEN }} --prod --confirm
