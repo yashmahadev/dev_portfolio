@@ -33,21 +33,31 @@ npm install
 yarn install
 ```
 
-3. Start the development server
+3. Set up environment variables
+```bash
+# Copy the example environment file
+cp .env.example .env
+
+# Edit the file with your preferences
+# VITE_DATA_PATH=src/data/portfolio-data.json
+# VITE_PUBLIC_DATA_URL=https://your-remote-json-url.com/data.json (optional)
+```
+
+4. Start the development server
 ```bash
 npm run dev
 # or
 yarn dev
 ```
 
-4. Start the data API server (optional - for editing content via the UI)
+5. Start the data API server (optional - for editing content via the UI)
 ```bash
 npm run server
 # or
 yarn server
 ```
 
-5. Or run both the development server and API server together
+6. Or run both the development server and API server together
 ```bash
 npm run dev:full
 # or
@@ -58,13 +68,13 @@ The site will be available at http://localhost:5173 and the API server at http:/
 
 ## Customizing Content
 
-There are two ways to customize your portfolio content:
+There are multiple ways to customize your portfolio content:
 
-### 1. Edit the JSON file directly
+### 1. Edit the JSON file directly (Development)
 
-Modify the file at `src/data/portfolio-data.json`.
+Modify the file at `src/data/portfolio-data.json` and rebuild your project.
 
-### 2. Use the built-in Data Editor
+### 2. Use the built-in Data Editor (Development Only)
 
 1. Start both the development server and API server:
 ```bash
@@ -76,6 +86,30 @@ npm run dev:full
 3. Make your changes in the editor
 
 4. Click "Save Changes" to update your content
+
+### 3. Updating Content in Production
+
+For Vercel deployments, you can update your portfolio content by:
+
+1. **GitHub Method** (Recommended): 
+   - Update the `src/data/portfolio-data.json` file in your GitHub repository
+   - Commit and push the changes
+   - Vercel will automatically redeploy with your new content
+
+2. **Direct Editing**:
+   - Clone your repository
+   - Edit the `src/data/portfolio-data.json` file
+   - Run the build locally (`npm run build`)
+   - Deploy the updated `dist` directory to Vercel manually
+
+3. **Using External Data Source**:
+   - Host your JSON data on a service like GitHub Gist, JSONBin, or any CDN
+   - Set the `VITE_PUBLIC_DATA_URL` environment variable in your Vercel project to point to this file
+   - Or access your portfolio with the data URL as a query parameter:
+     ```
+     https://your-portfolio.com/?dataUrl=https://your-json-host.com/your-data.json
+     ```
+   - This allows you to update content without redeploying
 
 ## Data Structure
 
@@ -110,10 +144,22 @@ yarn build
 
 2. Deploy the `dist` directory to your hosting provider.
 
-For the data API in production:
-- Set up the API server on your hosting provider
-- Update the API_URL in the DataEditor component to point to your production API
-- Add authentication to secure the API endpoints
+For Vercel deployments:
+- Connect your GitHub repository to Vercel
+- Set up environment variables in the Vercel dashboard (see setup-vercel-env.md)
+- Vercel will automatically build and deploy your site
+- The portfolio data will be included in the build
+
+## Environment Variables
+
+The portfolio uses the following environment variables:
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| VITE_DATA_PATH | Path to the JSON data file | src/data/portfolio-data.json |
+| VITE_PUBLIC_DATA_URL | URL to a remote JSON data file (optional) | - |
+
+See `setup-vercel-env.md` for detailed instructions on setting up environment variables in Vercel.
 
 ## Adding Authentication (Optional)
 

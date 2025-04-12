@@ -13,6 +13,9 @@ const navLinks = [
   { name: 'Contact', href: '#contact' },
 ];
 
+// Only show editor in development
+const isDev = import.meta.env.DEV;
+
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -94,13 +97,15 @@ const Navbar = () => {
                 </a>
               ))}
               
-              {/* <Link
-                to="/editor"
-                className="px-3 py-2 text-sm font-medium hover:text-primary transition-colors flex items-center gap-1"
-              >
-                <Settings className="h-4 w-4" />
-                <span>Edit Data</span>
-              </Link> */}
+              {isDev && (
+                <Link
+                  to="/editor"
+                  className="px-3 py-2 text-sm font-medium hover:text-primary transition-colors flex items-center gap-1"
+                >
+                  <Settings className="h-4 w-4" />
+                  <span>Edit Data</span>
+                </Link>
+              )}
 
               <button
                 onClick={toggleTheme}
@@ -181,14 +186,16 @@ const Navbar = () => {
               </a>
             ))}
             
-            <Link
-              to="/editor"
-              className="px-6 py-4 text-lg font-medium border-b border-border hover:bg-primary/5 hover:text-primary transition-colors flex items-center gap-2"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              <Settings className="h-5 w-5" />
-              Edit Portfolio Data
-            </Link>
+            {isDev && (
+              <Link
+                to="/editor"
+                className="px-6 py-4 text-lg font-medium border-b border-border hover:bg-primary/5 hover:text-primary transition-colors flex items-center gap-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <Settings className="h-5 w-5" />
+                Edit Portfolio Data
+              </Link>
+            )}
           </div>
           
           {/* Footer section in mobile menu */}

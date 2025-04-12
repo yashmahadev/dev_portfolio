@@ -31,11 +31,15 @@ export const PortfolioProvider: React.FC<PortfolioProviderProps> = ({
   customDataUrl 
 }) => {
   const [state, setState] = useState<PortfolioContextType>(initialContextValue);
+  const isDev = import.meta.env.DEV;
+  
+  // Get the public data URL from environment variables
+  const publicDataUrl = import.meta.env.VITE_PUBLIC_DATA_URL;
 
   useEffect(() => {
     const loadData = async () => {
       try {
-        // If a custom data URL is provided, fetch from that URL
+        // First priority: Custom data URL from query parameter
         if (customDataUrl) {
           const response = await fetch(customDataUrl);
           if (!response.ok) {
@@ -43,10 +47,29 @@ export const PortfolioProvider: React.FC<PortfolioProviderProps> = ({
           }
           const customData = await response.json();
           setState({ data: customData, loading: false, error: null });
-        } else {
-          // Otherwise, use the imported static JSON data
-          setState({ data: portfolioData, loading: false, error: null });
+          console.log('Using custom data URL from query parameter');
+          return;
         }
+        
+        // Second priority: Environment variable data URL (for production)
+        if (publicDataUrl && publicDataUrl.trim() !== '') {
+          try {
+            const response = await fetch(publicDataUrl);
+            if (response.ok) {
+              const remoteData = await response.json();
+              setState({ data: remoteData, loading: false, error: null });
+              console.log('Using public data URL from environment variables');
+              return;
+            }
+          } catch (error) {
+            console.warn('Failed to load from public data URL, falling back to bundled data');
+            // Continue to use the imported data
+          }
+        }
+        
+        // Third priority: Bundled data
+        console.log('Using bundled JSON data');
+        setState({ data: portfolioData, loading: false, error: null });
       } catch (error) {
         console.error('Error loading portfolio data:', error);
         setState({ 
@@ -58,7 +81,7 @@ export const PortfolioProvider: React.FC<PortfolioProviderProps> = ({
     };
 
     loadData();
-  }, [customDataUrl]);
+  }, [customDataUrl, publicDataUrl]);
 
   return (
     <PortfolioContext.Provider value={state}>

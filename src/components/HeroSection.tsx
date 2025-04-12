@@ -2,8 +2,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { usePortfolio } from '@/contexts/PortfolioContext';
+import { useLocation } from 'react-router-dom';
 
 const HeroSection = () => {
+  const location = useLocation();
   const { data, loading } = usePortfolio();
   const [isLoaded, setIsLoaded] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
