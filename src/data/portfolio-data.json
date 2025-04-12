@@ -2,7 +2,7 @@
   "hero": {
     "name": "Yash Mahadevwala",
     "title": "Software Engineer",
-    "specialization": "Vue.js, React.js & Node.js",
+    "specialization": "Vue.js, Node.js, Laravel, Nest js",
     "description": "Building user-friendly web applications with modern technologies. Passionate about creating efficient, clean code and delivering exceptional user experiences.",
     "callToAction": "Contact Me",
     "secondaryAction": "View My Work",
@@ -56,6 +56,7 @@
           { "name": "JavaScript", "level": 92 },
           { "name": "TypeScript", "level": 85 },
           { "name": "HTML/CSS", "level": 95 },
+          { "name": "Bootstrap", "level": 90 },
           { "name": "Tailwind CSS", "level": 90 }
         ]
       },
@@ -65,7 +66,11 @@
           { "name": "Node.js", "level": 88 },
           { "name": "Express", "level": 85 },
           { "name": "MongoDB", "level": 80 },
+          { "name": "Laravel", "level": 90 },
+          { "name": "Nest js", "level": 70 },
           { "name": "SQL", "level": 75 },
+          { "name": "MySQL", "level": 80 },
+          { "name": "PostgreSQL", "level": 70 },
           { "name": "RESTful APIs", "level": 92 }
         ]
       },
@@ -76,7 +81,12 @@
           { "name": "Docker", "level": 75 },
           { "name": "AWS", "level": 70 },
           { "name": "Testing", "level": 85 },
-          { "name": "CI/CD", "level": 70 }
+          { "name": "CI/CD", "level": 70 },
+          { "name": "Linux", "level": 80 },
+          { "name": "Gitlab", "level": 70 },
+          { "name": "Github", "level": 70 },
+          { "name": "Gitlab CI/CD", "level": 60},
+          { "name": "Github Actions", "level": 70 }
         ]
       }
     ]
@@ -87,8 +97,8 @@
     "positions": [
       {
         "title": "Senior Software Engineer",
-        "company": "Biz4Group",
-        "period": "2020 - Present",
+        "company": "Peerbits",
+        "period": "04/2024 - Present",
         "description": "Leading development of complex web applications using React, Vue.js, and Node.js. Mentoring junior developers and implementing best practices for code quality.",
         "achievements": [
           "Optimized application performance by 40% through code refactoring and implementing lazy loading",
@@ -99,8 +109,8 @@
       },
       {
         "title": "Web Developer",
-        "company": "Eminenture",
-        "period": "2018 - 2020",
+        "company": "Dynamic Dreamz",
+        "period": "06/2021 - 03/2024",
         "description": "Developed responsive web applications and collaborated with design team to create intuitive user interfaces.",
         "achievements": [
           "Built and maintained multiple client websites with clean, efficient code",
