@@ -34,5 +34,6 @@ jobs:
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
           working-directory: ./  # adjust if your project is in a subfolder
+          prod: true
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
