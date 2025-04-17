@@ -6,56 +6,56 @@ import { Button } from '@/components/ui/button';
 import { ExternalLink, Github } from 'lucide-react';
 
 const projects = [
-  {
-    title: "E-commerce Platform",
-    description: "A full-featured e-commerce platform with product management, shopping cart, and payment integration.",
-    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&h=400",
-    technologies: ["Vue.js", "Vuex", "Node.js", "Express", "MongoDB"],
-    links: {
-      demo: "#",
-      github: "#"
-    }
-  },
-  {
-    title: "Task Management App",
-    description: "A collaborative task management application with real-time updates and team collaboration features.",
-    image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=600&h=400",
-    technologies: ["React.js", "Redux", "Firebase", "Material UI"],
-    links: {
-      demo: "#",
-      github: "#"
-    }
-  },
-  {
-    title: "Real Estate Marketplace",
-    description: "A platform for property listings with advanced search features and interactive maps.",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&h=400",
-    technologies: ["Vue.js", "Nuxt.js", "Laravel", "MySQL", "Google Maps API"],
-    links: {
-      demo: "#",
-      github: "#"
-    }
-  },
-  {
-    title: "Social Media Dashboard",
-    description: "An analytics dashboard for monitoring social media metrics and engagement.",
-    image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=600&h=400",
-    technologies: ["React.js", "Chart.js", "Node.js", "Express", "Social Media APIs"],
-    links: {
-      demo: "#",
-      github: "#"
-    }
-  },
-  {
-    title: "Healthcare Portal",
-    description: "A patient management system for healthcare providers with appointment scheduling and medical records.",
-    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&h=400",
-    technologies: ["Vue.js", "Express.js", "MongoDB", "Socket.io"],
-    links: {
-      demo: "#",
-      github: "#"
-    }
-  }
+  // {
+  //   title: "E-commerce Platform",
+  //   description: "A full-featured e-commerce platform with product management, shopping cart, and payment integration.",
+  //   image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&h=400",
+  //   technologies: ["Vue.js", "Vuex", "Node.js", "Express", "MongoDB"],
+  //   links: {
+  //     demo: "#",
+  //     github: "#"
+  //   }
+  // },
+  // {
+  //   title: "Task Management App",
+  //   description: "A collaborative task management application with real-time updates and team collaboration features.",
+  //   image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=600&h=400",
+  //   technologies: ["React.js", "Redux", "Firebase", "Material UI"],
+  //   links: {
+  //     demo: "#",
+  //     github: "#"
+  //   }
+  // },
+  // {
+  //   title: "Real Estate Marketplace",
+  //   description: "A platform for property listings with advanced search features and interactive maps.",
+  //   image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&h=400",
+  //   technologies: ["Vue.js", "Nuxt.js", "Laravel", "MySQL", "Google Maps API"],
+  //   links: {
+  //     demo: "#",
+  //     github: "#"
+  //   }
+  // },
+  // {
+  //   title: "Social Media Dashboard",
+  //   description: "An analytics dashboard for monitoring social media metrics and engagement.",
+  //   image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=600&h=400",
+  //   technologies: ["React.js", "Chart.js", "Node.js", "Express", "Social Media APIs"],
+  //   links: {
+  //     demo: "#",
+  //     github: "#"
+  //   }
+  // },
+  // {
+  //   title: "Healthcare Portal",
+  //   description: "A patient management system for healthcare providers with appointment scheduling and medical records.",
+  //   image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&h=400",
+  //   technologies: ["Vue.js", "Express.js", "MongoDB", "Socket.io"],
+  //   links: {
+  //     demo: "#",
+  //     github: "#"
+  //   }
+  // }
 ];
 
 const ProjectsSection = () => {
